@@ -22,10 +22,20 @@ The car uses sensors (9 rays from -90° to 90°) to detect track boundaries, fee
 
 1. **Clone the Repo**:
    Requirement: Python 3.10 or newer
+
    ```bash
    git clone https://github.com/riccione83/self-driving-car.git
    cd autonomous-driving-sim
    pip install pygame numpy tensorflow scipy
+   ```
+
+   Remove car_model.weights.h5 file to start manual training from scratch. Otherwise use the pre-trained model keeping the file.
+
+   ## Usage
+
+   To run the simulation, use the following command:
+
+   ```bash
    python car.py
    ```
 

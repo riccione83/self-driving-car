@@ -24,7 +24,7 @@ TIME_PENALTY = -0.02
 MANUAL_OVERRIDE_REWARD = 20.0
 DEEP_TRAIN_EPISODES = 100
 BATCH_SIZE = 64
-PARALLEL_EPISODES = 4
+PARALLEL_EPISODES = 8   # Adjust as needed
 USE_PARALLEL_GPU = False
 MANUAL_BOOST_FACTOR = 2.0
 EPSILON_START = 1.0
@@ -40,18 +40,18 @@ INDICATOR_COLOR_OFF = (100, 100, 100)
 INDICATOR_COLOR_ON = (255, 215, 0)
 
 # Constants
-WIDTH, HEIGHT = 800, 600
+WIDTH, HEIGHT = 1024, 760
 CAR_SIZE = 20
 FPS = 60
 TRACK_WIDTH = 80
-PRE_TRAIN_EPISODES = 50
+PRE_TRAIN_EPISODES = 100
 MODEL_PATH = "car_model.weights.h5"
 MANUAL_STEPS = 5000
 
 # Reward scaling constants
-PROGRESS_SCALE = 5.0
+PROGRESS_SCALE = 20.0
 CENTERING_SCALE = 2.0
-SENSOR_PENALTY_SCALE = 3.0
+SENSOR_PENALTY_SCALE = 5.0
 RACING_LINE_SCALE = 10.0
 LAP_REWARD_BASE = 500
 OPTIMAL_LAP_TIME = 1000
@@ -686,7 +686,7 @@ def main():
             car.draw(death_flash=death_flash, good_trajectory=car.is_good_trajectory(prev_progress))
             text = font.render(f"Episode: {episode}  Reward: {total_reward:.1f}  Epsilon: {agent.epsilon:.3f}", True, BLACK)
             screen.blit(text, (10, 10))
-            save_text = font.render("Press 'S' to save, 'R' for new track, 'SPACE' to toggle manual", True, BLACK)
+            save_text = font.render("Press 'S' to save, 'R' for new track, 'SPACE' for manual, 'L' for deep learning", True, BLACK)
             screen.blit(save_text, (10, 40))
             status = "Alive" if car.is_on_track() else "Dead"
             status_text = font.render(f"Status: {status}", True, BLACK)
